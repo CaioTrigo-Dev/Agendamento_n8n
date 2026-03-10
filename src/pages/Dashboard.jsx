@@ -1,28 +1,39 @@
-import { useState } from "react";
+import { useContext} from "react";
 import Navbar from "../components/layout/NavBar"
 import AppointmentCard from "../components/dashboard/AppointmentCard";
+import { AppointmentContext } from "../contexts/AppointmentContext";
+import {Spinner} from '../components/ui/spinner';
 
 const Dashboard = ()=>{
-    const [filtroAtivo, setFiltroAtivo]= useState('todos');
+    const {activeFilter, appointments, search, isLoading} = useContext(AppointmentContext);
 
-    const client = [
-        {id: 1, name: 'Caio Cesar Macedo Trigo', phone: 5521980125640, time: '13:30', status: 'agendado'},
-        {id: 2, name: 'Ana Clara Barros de Paiva', phone: 5521983748392, time: null, status: 'atendimento'},
-        {id: 3, name: 'Marcia Valeria Macedo de Sousa', phone: 552194859940, time: null, status: 'cancelado'}
-    ]
+    const filteredClients = appointments.filter((patient)=>{
+        const matchesStatus = activeFilter === 'todos' || patient.status === activeFilter;
 
-    const filteredClients = filtroAtivo === 'todos' ? client : client.filter(item => item.status === filtroAtivo);
+        const matchesSearch = (patient.name || "").toLowerCase().includes(search.toLowerCase());
+        // console.log('key', patient.id, "Nome", patient.name)
+        return matchesSearch && matchesStatus;
+    });
 
-
+    
     return(
         <div>
-            <Navbar filtroAtual={filtroAtivo} setFiltro={setFiltroAtivo}/>
-            <main className="p-8 flex gap-2">
-                {filteredClients.map((item)=> (
-                    <div key={item.id}>
+            <Navbar />
+            <main className="p-8 grid grid-cols-3 gap-2">
+                {isLoading ? 
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm">
+                    <Spinner className="size-12 text-blue-600"/>
+                </div> : (
+                    filteredClients.length < 1 ? 
+                <div className="p-8 flex justify-center">
+                    <p>Nenhum Paciente por enquanto!</p>
+                </div> 
+                : filteredClients.map((item)=> (
+                    <div key={item.id} >
                         <AppointmentCard client={item.name} phone={item.phone} time={item.time} status={item.status}/>
                     </div>
-                ))}
+                ))
+                )}
             </main>
         </div>
     )

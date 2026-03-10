@@ -1,5 +1,5 @@
 import AppointmentCard from './components/dashboard/AppointmentCard'
-import './index.css' // ESSA LINHA É OBRIGATÓRIA
+import './index.css'
 import Dashboard from './pages/Dashboard'
 
 function App() {
