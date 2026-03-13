@@ -1,11 +1,11 @@
-import AppointmentCard from './components/dashboard/AppointmentCard'
+
 import './index.css'
-import Dashboard from './pages/Dashboard'
+import AppRouter from './routes'
 
 function App() {
   return (
-    <div>
-      <Dashboard/>
+    <div >
+      <AppRouter/>
     </div>
   )
 }
