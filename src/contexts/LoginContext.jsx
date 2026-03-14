@@ -29,11 +29,17 @@ export const LoginProvider = ({children})=>{
             return err.message;
         }
     }
+    function logout(){
+        setUser(null);
+        localStorage.removeItem('@UserName:user');
+        
+    }
 
     const value = {
         user,
         setUser,
-        handleLogin
+        handleLogin,
+        logout
     }
 
 

@@ -3,10 +3,12 @@ import { useContext } from 'react';
 import { AppointmentContext } from '../../contexts/AppointmentContext';
 import {Field} from '../ui/field';
 import { Input } from '../ui/input'; 
+import { Button } from '../ui/button';
+import { LoginContext } from '@/contexts/LoginContext';
 
 const Navbar = () => {
     const {activeFilter, setActiveFilter, search, setSearch, appointments} = useContext(AppointmentContext);
-
+    const {logout} = useContext(LoginContext);
     const filtros = [
         { id: 'todos', label: 'Todos', icon: 'line-md:list-indented' },
         { id: 'agendado', label: 'Agendados', icon: 'line-md:calendar' },
@@ -55,6 +57,7 @@ return (
         <div className="h-8 w-8 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center">
             <Icon icon="line-md:account" width="24" height="24" />
         </div>
+            <Button onClick={logout} className="bg-blue-600 hover:bg-blue-400">logout</Button>
         
         </div>
     </nav>
