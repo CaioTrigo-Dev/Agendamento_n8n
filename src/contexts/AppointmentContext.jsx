@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
@@ -34,16 +35,22 @@ export const AppointmentProvider = ({children})=> {
             const apiURL = import.meta.env.VITE_API_URL;
             setIsLoading(true);
             try{
-                
                 const response = await axios.get(apiURL);
-                if(response.data){
-                    toast.success('Novo Cliente', {
-                        description: `Cliente   ${response.data[0]?.nome} Foi adicionado!`
+                const newData = response.data
+                
+                setAppointments(response.data);
+                if(appointments.length > 0){
+                    const newItems = newData.filter((newItem) =>{
+                        !appointments.some(oldItem => oldItem.id === newItem.id)
+                    })
+
+                    newItems.forEach(item => {
+                        toast.success('Novo Cliente', {
+                        description: `Cliente  ${item.name} Foi adicionado!`
+                    })
                     })
                 }
 
-                console.log(response.data.map(item => item.status))
-                setAppointments(response.data);
             }catch(error){
                 toast.error('Connection Error', {
                     description: "Não foi Possivel sincronizar com o banco de dados"
@@ -54,8 +61,6 @@ export const AppointmentProvider = ({children})=> {
             }
         }
         fetchAppointments();
-        setInterval(()=>{
-                }, 20000)
     }, []);
 
 
