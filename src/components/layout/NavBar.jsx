@@ -15,7 +15,7 @@ const Navbar = () => {
         { id: 'atendimento', label: 'Em Atendimento', icon: 'line-md:loading-twotone-loop' },
         { id: 'cancelado', label: 'Cancelados', icon: 'line-md:close-circle' },
     ];
-
+    const {user} = useContext(LoginContext);
     
 return (
     <nav className="bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between sticky top-0 z-10">
@@ -53,9 +53,9 @@ return (
         </div>
 
         <div className="flex items-center gap-4 text-slate-400">
-        <Icon icon="line-md:bell" width="22" />
-        <div className="h-8 w-8 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center">
-            <Icon icon="line-md:account" width="24" height="24" />
+        {/* <Icon icon="line-md:bell" width="22" /> */}
+        <div className="text-blue-600">
+            {user}
         </div>
             <Button onClick={logout} className="bg-blue-600 hover:bg-blue-400">logout</Button>
         

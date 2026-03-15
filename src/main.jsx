@@ -11,9 +11,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode >
     <LoginProvider>
       <AppointmentProvider>
+      <Toaster position='top-center' richColors/>
         <App />
       </AppointmentProvider>
-      <Toaster position='top-center' richColors/>
     </LoginProvider>
   </StrictMode>,
 )

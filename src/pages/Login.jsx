@@ -28,29 +28,26 @@ export function Login() {
             navegador('/dashboard');
         }
     })
-
+    
   return (
-    <main className="p-8 flex justify-center items-center bg-black">
+    <main className=" min-h-screen p-8 flex justify-center items-center bg-black">
 
     <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Entre com sua conta</CardTitle>
-        <CardDescription>
-          Entre com o Email da sua conta
-        </CardDescription>
         <CardAction>
           <Button variant="link">Criar Conta</Button>
         </CardAction>
       </CardHeader>
       <CardContent>
-        <form>
+        <form >
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="email@gmail.com"
                 required
                 value={email}
                 onChange={(e)=> setEmail(e.target.value)}
@@ -78,6 +75,9 @@ export function Login() {
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
+        <CardDescription>
+            {handleLogin ? '' : handleLogin}
+        </CardDescription>
         <Button 
         type="submit" 
         className="w-full bg-blue-600 hover:bg-blue-400"
