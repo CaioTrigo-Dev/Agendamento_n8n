@@ -20,7 +20,7 @@ export const LoginProvider = ({children})=>{
             if(username === 'caiorj95@gmail.com' && password === '12345'){
                 setUser('Caio Cesar');
                 localStorage.setItem('@UserName:user', JSON.stringify('Caio'));
-                return true;
+                return true
             }
             else{
                 throw new Error('Senha Incorreta');
