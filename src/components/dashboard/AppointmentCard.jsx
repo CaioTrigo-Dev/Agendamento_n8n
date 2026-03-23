@@ -16,33 +16,32 @@ const AppointmentCard = ({client, time, status, phone }) => {
                 
 
     return(
-        <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center hover:shadow-md transition-shadow">
-    <div className="flex items-center gap-4">
+    <div className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex justify-between items-center hover:shadow-md transition-shadow">
+        <div className="flex items-center gap-4">
 
-        <div className="bg-slate-100 p-3 rounded-full text-slate-400">
-            <Icon icon="line-md:account" width="24" height="24" />
-        </div>
+            <div className="bg-slate-100 p-3 rounded-full text-slate-400">
+                <Icon icon="line-md:account" width="24" height="24" />
+            </div>
 
 
-        <div className="flex flex-col">
-            <h3 className="font-bold text-slate-900 text-lg leading-tight">
-                {client}
-            </h3>
-            
-            <div className="flex flex-col gap-1 mt-1">
-                <p className="text-sm text-slate-600 flex items-center gap-2">
-                    <Icon icon="line-md:phone-call-filled-loop" width="18" height="18" /> {phone}
-                </p>
-                {filterTime}
+            <div className="flex flex-col">
+                <h3 className="font-bold text-slate-900 text-lg leading-tight">
+                    {client}
+                </h3>
+                
+                <div className="flex flex-col gap-1 mt-1">
+                    <p className="text-[12px] text-slate-600 flex items-center gap-2">
+                        <Icon icon="line-md:phone-call-filled-loop" width="16" height="16" /> {phone}
+                    </p>
+                    {filterTime}
+                </div>
             </div>
         </div>
+        
+        <span className={`xl:text-[12px] md:text-[10px] px-3 py-1 rounded-full text-[8px] font-extrabold uppercase tracking-widest border flex items-start ${statusStyles[status]}`}>
+            {status}
+        </span>
     </div>
-
-    {/* Status lá na ponta direita */}
-    <span className={`px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest border ${statusStyles[status]}`}>
-        {status}
-    </span>
-</div>
     )
 }
 

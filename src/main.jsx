@@ -6,17 +6,20 @@ import { AppointmentProvider} from './contexts/AppointmentContext.jsx'
 import { Toaster } from 'sonner'
 import { LoginProvider } from './contexts/LoginContext'
 import { ThemeProvider } from './contexts/themeContext'
+import { SidebarProvider} from './components/ui/sidebar'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode >
-    <LoginProvider>
-      <ThemeProvider>
-      <AppointmentProvider>
-      <Toaster position='top-center' richColors/>
-        <App />
-      </AppointmentProvider>
-      </ThemeProvider>
-    </LoginProvider>
+      <LoginProvider>
+        <SidebarProvider>
+          <ThemeProvider>
+            <AppointmentProvider>
+              <Toaster position='top-center' richColors/>
+                <App />
+            </AppointmentProvider>
+          </ThemeProvider>
+        </SidebarProvider>
+      </LoginProvider>
   </StrictMode>,
 )
