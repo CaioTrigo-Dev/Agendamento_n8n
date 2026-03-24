@@ -4,10 +4,6 @@ import AppointmentCard from "../components/dashboard/AppointmentCard";
 import { AppointmentContext } from "../contexts/AppointmentContext";
 import {Spinner} from '../components/ui/spinner';
 import { ThemeContext } from "@/contexts/themeContext";
-import SideBar from "@/components/layout/SideBar";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
-import { Icon } from "@iconify/react";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import NavBarMobile from "@/components/layout/NavBarMobile";
@@ -21,8 +17,7 @@ const Dashboard = ()=>{
         const matchesSearch = (patient.name || "").toLowerCase().includes(search.toLowerCase());
         return matchesSearch && matchesStatus;
     });
-
-    console.log(theme)
+    
     return(
 
         
