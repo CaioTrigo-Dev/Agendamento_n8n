@@ -5,6 +5,7 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({children})=>{
     const [user, setUser] = useState(null);
+    const [viewError, setViewError] = useState(null);
 
     useEffect(()=>{
         const storageUser = localStorage.getItem('@UserName:user');
@@ -20,9 +21,11 @@ export const LoginProvider = ({children})=>{
             if(username === 'caiorj95@gmail.com' && password === '12345'){
                 setUser('Caio Cesar');
                 localStorage.setItem('@UserName:user', JSON.stringify('Caio'));
+                setViewError(null)
                 return true
             }
             else{
+                setViewError('Senha Incorreta');
                 throw new Error('Senha Incorreta');
             }
         }catch(err){
@@ -37,6 +40,7 @@ export const LoginProvider = ({children})=>{
 
     const value = {
         user,
+        viewError,
         setUser,
         handleLogin,
         logout
