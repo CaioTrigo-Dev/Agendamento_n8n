@@ -28,8 +28,6 @@ src/
  ├── hooks/            # Hooks customizados (use-mobile, etc.)
  ├── pages/            # Telas principais (Login, Dashboard, Agenda, Clientes)
  ├── routes/           # Configuração de rotas privadas e públicas
- └── services/         # Configuração do Axios e chamadas de API
-
 ```
 
 ⚙️ Integração com n8n
