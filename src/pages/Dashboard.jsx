@@ -21,8 +21,7 @@ const Dashboard = ()=>{
         const matchesSearch = (patient.name || "").toLowerCase().includes(search.toLowerCase());
         return matchesSearch && matchesStatus;
     });
-
-    console.log(theme)
+    
     return(
 
         

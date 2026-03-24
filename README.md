@@ -2,6 +2,9 @@
 
 Este é um projeto de Dashboard para gerenciamento de agendamentos em tempo real, desenvolvido para otimizar o fluxo de atendimento de uma clínica estética. O sistema consome dados de uma automação via **n8n** e reflete as atualizações instantaneamente na interface.
 
+Este é um projeto de Dashboard para gerenciamento de agendamentos em tempo real...
+
+![Demonstração do Funcionamento do Sistema](./src/assets/videoDemonstrativo.gif)
 ## 🛠️ Tecnologias Utilizadas
 
 * **React.js**: Biblioteca principal para construção da interface.
@@ -68,10 +71,3 @@ Desenvolvido por CaioTrigo-dev
 
 ---
 
-### 💡 Dicas para o seu Portfólio:
-
-1.  **Imagens/GIFs**: Se puder, tire prints do Dashboard (com o fundo que corrigimos!) e do Login e coloque no README. Projetos visuais chamam muito mais atenção.
-2.  **O ponto alto**: Na entrevista, mencione que você usou o n8n para simular um ambiente de produção real, mostrando que você entende de integração entre Front-end e serviços externos.
-3.  **Variáveis de Ambiente**: Deixe bem claro no README que o arquivo `.env` é necessário para a conexão, conforme coloquei no passo 3 acima.
-
-**O que você acha dessa estrutura?** Quer que eu adicione uma seção técnica explicando como você fez a lógica de comparação para os **toasts de novos clientes**? Seria um ótimo diferencial técnico!
