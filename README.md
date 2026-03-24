@@ -1,16 +1,77 @@
-# React + Vite
+# 🏥 Sistema de Agendamento - Clínica Estética
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de Dashboard para gerenciamento de agendamentos em tempo real, desenvolvido para otimizar o fluxo de atendimento de uma clínica estética. O sistema consome dados de uma automação via **n8n** e reflete as atualizações instantaneamente na interface.
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **React.js**: Biblioteca principal para construção da interface.
+* **Vite**: Tooling de nova geração para um desenvolvimento rápido.
+* **Tailwind CSS**: Estilização responsiva e moderna.
+* **Context API**: Gerenciamento de estado global (Login, Agendamentos e Tema).
+* **Hooks (useState, useEffect)**: Controle de ciclo de vida e estados.
+* **Axios**: Consumo de API/Webhook.
+* **Sonner**: Notificações toast elegantes.
+* **Lucide React / Iconify**: Biblioteca de ícones.
 
-## React Compiler
+## 📁 Estrutura de Pastas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```text
+src/
+ ├── components/
+ │    ├── dashboard/   # Componentes específicos do painel
+ │    ├── layout/      # Navbar, Sidebar e navegação
+ │    └── ui/          # Componentes de base (botões, inputs, cards)
+ ├── contexts/         # Gerenciamento de estados globais (Auth, Theme, Appointments)
+ ├── hooks/            # Hooks customizados (use-mobile, etc.)
+ ├── pages/            # Telas principais (Login, Dashboard, Agenda, Clientes)
+ ├── routes/           # Configuração de rotas privadas e públicas
+ └── services/         # Configuração do Axios e chamadas de API
 
-## Expanding the ESLint configuration
+⚙️ Integração com n8n
+O projeto utiliza um Webhook do n8n como backend dinâmico. A automação processa novos leads/clientes e os disponibiliza via API, que é consumida pelo React para atualizar a lista de agendamentos sem a necessidade de refresh manual constante.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 Como Executar o Projeto
+Clone o repositório:
+
+Bash
+git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.git)
+Instale as dependências:
+
+Bash
+npm install
+Configure as Variáveis de Ambiente (.env):
+Crie um arquivo .env na raiz do projeto e adicione a URL do seu Webhook:
+
+Snippet de código
+VITE_API_URL=[https://sua-url-do-n8n.com/webhook/agendamento](https://sua-url-do-n8n.com/webhook/agendamento)
+Inicie o servidor de desenvolvimento:
+
+Bash
+npm run dev
+Para acessar em outros dispositivos (celular/tablet) na mesma rede:
+
+Bash
+npm run dev -- --host
+🔐 Funcionalidades Principais
+Autenticação: Sistema de login protegido via Context API.
+
+Dashboard Real-time: Visualização de pacientes com filtros por status (Agendado, Atendimento, Cancelado).
+
+Busca Dinâmica: Filtro de pacientes por nome em tempo real.
+
+Modo Escuro (Dark Mode): Alternância de tema preservando a experiência do usuário.
+
+Responsividade Total: Interface adaptada para Desktop, Tablets e Mobile (Sidebar dinâmica).
+
+Desenvolvido por CaioTrigo-dev
+
+
+---
+
+### 💡 Dicas para o seu Portfólio:
+
+1.  **Imagens/GIFs**: Se puder, tire prints do Dashboard (com o fundo que corrigimos!) e do Login e coloque no README. Projetos visuais chamam muito mais atenção.
+2.  **O ponto alto**: Na entrevista, mencione que você usou o n8n para simular um ambiente de produção real, mostrando que você entende de integração entre Front-end e serviços externos.
+3.  **Variáveis de Ambiente**: Deixe bem claro no README que o arquivo `.env` é necessário para a conexão, conforme coloquei no passo 3 acima.
+
+**O que você acha dessa estrutura?** Quer que eu adicione uma seção técnica explicando como você fez a lógica de comparação para os **toasts de novos clientes**? Seria um ótimo diferencial técnico!
