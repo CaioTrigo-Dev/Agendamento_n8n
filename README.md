@@ -30,6 +30,8 @@ src/
  ├── routes/           # Configuração de rotas privadas e públicas
  └── services/         # Configuração do Axios e chamadas de API
 
+```
+
 ⚙️ Integração com n8n
 O projeto utiliza um Webhook do n8n como backend dinâmico. A automação processa novos leads/clientes e os disponibiliza via API, que é consumida pelo React para atualizar a lista de agendamentos sem a necessidade de refresh manual constante.
 
