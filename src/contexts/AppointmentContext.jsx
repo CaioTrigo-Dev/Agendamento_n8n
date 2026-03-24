@@ -32,23 +32,28 @@ export const AppointmentProvider = ({children})=> {
 
     useEffect(()=>{
         const fetchAppointments = async () =>{
-            const apiURL = import.meta.env.VITE_API_URL;
+            const apiURL = import.meta.env.VITE_API_URL || '';
             setIsLoading(true);
             try{
-                const response = await axios.get(apiURL);
-                const newData = response.data
-                
-                setAppointments(response.data);
-                if(appointments.length > 0){
-                    const newItems = newData.filter((newItem) =>{
-                        !appointments.some(oldItem => oldItem.id === newItem.id)
-                    })
-
-                    newItems.forEach(item => {
-                        toast.success('Novo Cliente', {
-                        description: `Cliente  ${item.name} Foi adicionado!`
-                    })
-                    })
+                if(apiURL){
+                    const response = await axios.get(apiURL);
+                    const newData = response.data
+                    
+                    setAppointments(response.data);
+                    if(appointments.length > 0){
+                        const newItems = newData.filter((newItem) =>{
+                            !appointments.some(oldItem => oldItem.id === newItem.id)
+                        })
+    
+                        newItems.forEach(item => {
+                            toast.success('Novo Cliente', {
+                            description: `Cliente  ${item.name} Foi adicionado!`
+                        })
+                        })
+                    }
+                }
+                else{
+                    setAppointments(MOCK_DATA);
                 }
 
             }catch(error){
